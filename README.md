@@ -1,29 +1,21 @@
-# Next.js + Tailwind CSS Example
+# Gimme (the Loot)
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This repository uses Next.js and Tailwind for the front end experience.
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
-
-## Preview
-
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+We are using Hardhat for Solidity development. We also are using the [@openzeppelin/contracts](https://www.npmjs.com/package/@openzeppelin/contracts) NPM package to import standard OZ contracts.
 
 ## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+To deploy the contract to the test net, make sure that to update `hardhat.config.js` to have the private key of the wallet you'd like to deploy from, and an Infura project ID.
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+You will also need to add the contract to the allowlist in the security settings for the project within Infura.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Once all that is set up, you can run the following command to deploy to the Rinkeby test network:
+`npx hardhat run scripts/deploy.js --network rinkeby`
+
+## How to verify the contract
+
+Once the contract is deployed, you can also verify the contract. First, add the contract address to the allowlist in the security setting for the project in Infura.
+
+Then run the following command:
+`npx hardhat verify --network rinkeby DEPLOYED_CONTRACT_ADDRESS`
